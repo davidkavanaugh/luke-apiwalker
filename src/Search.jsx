@@ -14,11 +14,13 @@ const Search = () => {
   };
 
   const { data, getData, selection, updateSelection, id, updateId } = state();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    getData(selection, id);
-  };
+    getData(selection, id)
+  }
+
+  console.log(data)
+  
   return (
     <form style={style.search} onSubmit={handleSubmit}>
       <div style={style.formGroup}>
@@ -30,7 +32,8 @@ const Search = () => {
           onChange={(e) => updateSelection(e.target.value)}
         >
           <option value=""> -- </option>
-          <option value="test">test</option>
+          <option value="people">people</option>
+          <option value="planets">planets</option>
         </select>
       </div>
       <div style={style.formGroup}>
