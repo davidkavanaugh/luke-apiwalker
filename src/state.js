@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { navigate } from "@reach/router";
+import axios from "axios";
 
 export default (init = []) => {
   const [data, setData] = useState(init);
@@ -6,9 +8,22 @@ export default (init = []) => {
   const [id, setId] = useState("");
 
   const getData = (selection, id) => {
+    selection = "people";
+    id = 1;
     console.log(selection, id);
+    axios
+      .get(`https://swapi.dev/api/${selection}/${id}`)
+      .then((response) => {
+        setData(response.data);
+        return response.data;
+      })
+      .catch((err) => {
+        throw new Error({
+          error: err,
+          message: "These aren't the droids you're looking for",
+        });
+      });
   };
-
   const updateSelection = (selection) => {
     console.log(selection);
     setSelection(selection);
