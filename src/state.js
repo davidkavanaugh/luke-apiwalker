@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { navigate } from "@reach/router";
 import axios from "axios";
 
 export default (init = []) => {
