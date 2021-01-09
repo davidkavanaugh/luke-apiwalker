@@ -8,9 +8,6 @@ export default (init = []) => {
   const [id, setId] = useState("");
 
   const getData = (selection, id) => {
-    selection = "people";
-    id = 1;
-    console.log(selection, id);
     axios
       .get(`https://swapi.dev/api/${selection}/${id}`)
       .then((response) => {
