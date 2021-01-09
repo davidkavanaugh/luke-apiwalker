@@ -1,6 +1,7 @@
 import React from "react";
-import state from "./state";
-const Search = () => {
+import { navigate } from '@reach/router'
+
+const Search = props => {
   const style = {
     search: {
       outline: "1px solid black",
@@ -13,14 +14,17 @@ const Search = () => {
     },
   };
 
-  const { data, getData, selection, updateSelection, id, updateId } = state();
+  const { 
+    selection,
+    updateSelection,
+    id,
+    updateId, } = props;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    getData(selection, id)
+    if(selection && id) navigate(`/${selection}/${id}`);
   }
 
-  console.log(data)
-  
   return (
     <form style={style.search} onSubmit={handleSubmit}>
       <div style={style.formGroup}>
